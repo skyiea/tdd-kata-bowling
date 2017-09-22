@@ -69,6 +69,59 @@ describe('Bowling Game', () => {
             bowlingGame.roll(5);
             expect(bowlingGame.getScore()).be.eq(85);
         });
+
+        it('should return correct score after five consequent strikes', () => {
+            bowlingGame.roll(10);
+            expect(bowlingGame.getScore()).be.eq(10);
+            bowlingGame.roll(10);
+            expect(bowlingGame.getScore()).be.eq(30);
+            bowlingGame.roll(10);
+            expect(bowlingGame.getScore()).be.eq(60);
+            bowlingGame.roll(10);
+            expect(bowlingGame.getScore()).be.eq(90);
+            bowlingGame.roll(10);
+            expect(bowlingGame.getScore()).be.eq(120);
+            bowlingGame.roll(4);
+            expect(bowlingGame.getScore()).be.eq(132);
+            bowlingGame.roll(4);
+            expect(bowlingGame.getScore()).be.eq(140);
+            bowlingGame.roll(5);
+            expect(bowlingGame.getScore()).be.eq(145);
+        });
+
+        it('should return correct score after ten frames all with strikes', () => {
+            new Array(12).fill(0).forEach(() => {
+                bowlingGame.roll(10);
+            });
+            expect(bowlingGame.getScore()).be.eq(300);
+            bowlingGame.roll(5);
+            expect(bowlingGame.getScore()).be.eq(300);
+        });
+
+        it('should return correct score after 9 frames all with strikes and last frame with spare', () => {
+            new Array(9).fill(0).forEach(() => {
+                bowlingGame.roll(10);
+            });
+            expect(bowlingGame.getScore()).be.eq(240);
+            bowlingGame.roll(5);
+            expect(bowlingGame.getScore()).be.eq(255);
+            bowlingGame.roll(5);
+            expect(bowlingGame.getScore()).be.eq(265);
+            bowlingGame.roll(4);
+            // FIX me
+            expect(bowlingGame.getScore()).be.eq(273);
+        });
+
+        it('should return correct score after 9 frames all with strikes and last frame without strikes/spares', () => {
+            new Array(9).fill(0).forEach(() => {
+                bowlingGame.roll(10);
+            });
+            expect(bowlingGame.getScore()).be.eq(240);
+            bowlingGame.roll(2);
+            expect(bowlingGame.getScore()).be.eq(246);
+            bowlingGame.roll(3);
+            expect(bowlingGame.getScore()).be.eq(252);
+        });
     });
 
     describe('Spare Rule', () => {
@@ -79,6 +132,21 @@ describe('Bowling Game', () => {
             expect(bowlingGame.getScore()).be.eq(10);
             bowlingGame.roll(7);
             expect(bowlingGame.getScore()).be.eq(24);
+        });
+
+        it('should return correct score after two consequent spares', () => {
+            bowlingGame.roll(5);
+            expect(bowlingGame.getScore()).be.eq(5);
+            bowlingGame.roll(5);
+            expect(bowlingGame.getScore()).be.eq(10);
+            bowlingGame.roll(7);
+            expect(bowlingGame.getScore()).be.eq(24);
+            bowlingGame.roll(3);
+            expect(bowlingGame.getScore()).be.eq(27);
+            bowlingGame.roll(3);
+            expect(bowlingGame.getScore()).be.eq(33);
+            bowlingGame.roll(5);
+            expect(bowlingGame.getScore()).be.eq(38);
         });
     });
 });
