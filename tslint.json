@@ -3,6 +3,7 @@
     "tslint-config-wix"
   ],
   "rules": {
-    "no-invalid-this": false
+    "no-invalid-this": false,
+    "no-trailing-whitespace": false
   }
 }
