@@ -1,0 +1,36 @@
+{
+  "private": false,
+  "name": "tdd-kata",
+  "version": "1.0.0",
+  "author": {
+    "name": "Serhii Muryhin",
+    "email": "serhiim@wix.com",
+    "url": ""
+  },
+  "main": "dist/src/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "start": "yoshi start",
+    "build": ":",
+    "precommit": "yoshi lint",
+    "pretest": "yoshi build",
+    "test": "yoshi test",
+    "posttest": "yoshi lint",
+    "release": "yoshi release"
+  },
+  "devDependencies": {
+    "@types/chai": "~4.0.0",
+    "@types/mocha": "~2.2.0",
+    "chai": "~4.1.0",
+    "husky": "~0.14.0",
+    "tslint": "^5.7.0",
+    "tslint-config-wix": "^1.0.29",
+    "typescript": "~2.4.0",
+    "yoshi": "latest"
+  },
+  "publishConfig": {
+    "registry": "http://repo.dev.wix/artifactory/api/npm/npm-local/"
+  }
+}

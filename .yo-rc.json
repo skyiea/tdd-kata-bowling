@@ -1,0 +1,10 @@
+{
+  "generator-wix-js": {
+    "promptValues": {
+      "authorName": "Serhii Muryhin",
+      "authorEmail": "serhiim@wix.com",
+      "organization": "test",
+      "groupId": "test"
+    }
+  }
+}
